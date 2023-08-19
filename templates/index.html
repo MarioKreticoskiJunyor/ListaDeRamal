@@ -15,8 +15,10 @@
     </h1>
 
     <div id="searchContainer">
-        <input type="text" id="searchInput" placeholder="Buscar por nome...">
-        <button id="searchButton">Buscar</button>
+        <form method="post" action="/buscar">
+            <input type="text" id="searchInput" name="searchInput" placeholder="Buscar por nome...">
+            <button id="searchButton" type="submit">Buscar</button>
+        </form>
     </div>
 
     <table id="phoneList"class="table table-responsive-md table-bordered" cellspacing="0" cellpadding="4" rules="cols" border="1" id="GridView1">
@@ -32,28 +34,6 @@
             <td>{{ entry['setor'] }}</td>
         </tr>
         {% endfor %}
-    </table>
-
-    <script>
-        function buscarContatos() {
-            var query = document.getElementById("searchInput").value.toLowerCase();
-    
-            var table = document.getElementById("phoneList");
-    
-            for (var i = 1; i < table.rows.length; i++) {
-                var row = table.rows[i];
-    
-                var nome = row.cells[0].textContent.toLowerCase();
-    
-                if (nome.includes(query)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            }
-        }
-    
-        document.getElementById("searchButton").addEventListener("click", buscarContatos);
-    </script>
+    </table>    
 </body>
 </html>
