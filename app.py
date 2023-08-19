@@ -16,13 +16,13 @@ def index():
 
 @app.route('/buscar', methods=['POST'])
 def buscar_contatos():
-    query = unidecode.unidecode(request.form.get('searchInput').lower())  # Remova acentos da query
+    query = unidecode.unidecode(request.form.get('searchInput').lower())  
     
     filtered_data = []
     for entry in phone_data:
         if (
             unidecode.unidecode(entry['nome'].lower()).find(query) != -1 or
-            str(entry['ramal']).lower() == query or  # Converta para string antes de aplicar lower()
+            str(entry['ramal']).lower() == query or  
             unidecode.unidecode(entry['setor'].lower()).find(query) != -1
         ):
             filtered_data.append(entry)
