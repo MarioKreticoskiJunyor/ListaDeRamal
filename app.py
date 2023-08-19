@@ -19,13 +19,13 @@ def buscar_contatos():
     query = unidecode.unidecode(request.form.get('searchInput').lower())  
     
     filtered_data = []
-    for entry in phone_data:
+    for entrada in phone_data:
         if (
-            unidecode.unidecode(entry['nome'].lower()).find(query) != -1 or
-            str(entry['ramal']).lower() == query or  
-            unidecode.unidecode(entry['setor'].lower()).find(query) != -1
+            unidecode.unidecode(entrada['nome'].lower()).find(query) != -1 or
+            str(entrada['ramal']).lower() == query or  
+            unidecode.unidecode(entrada['setor'].lower()).find(query) != -1
         ):
-            filtered_data.append(entry)
+            filtered_data.append(entrada)
     
     return render_template('index.html', phone_data=filtered_data)
 
